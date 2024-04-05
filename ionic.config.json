@@ -1,0 +1,7 @@
+{
+  "name": "E-dairy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
