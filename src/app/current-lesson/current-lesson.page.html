@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Ваші заняття
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container" *ngIf="lastLessonAndDay">
+
+    <ng-container *ngIf="lastLessonAndDay.role === 'next'">
+      <p>Найближче заняття:</p>
+      <br><br>
+      <p>{{ lastLessonAndDay.day.name }}</p>
+      <strong>{{ lastLessonAndDay.lesson.subject }}</strong>
+      <p>з {{ Lesson.prettyTime(lastLessonAndDay.lesson.startTime)}} по {{ Lesson.prettyTime(lastLessonAndDay.lesson.endTime)}}</p>
+      <p *ngIf="lastLessonAndDay.lesson.link"><a href="{{ lastLessonAndDay.lesson.link }}" target="_blank">{{ lastLessonAndDay.lesson.link }}</a></p>
+      <p *ngIf="!lastLessonAndDay.lesson.startTime">
+        Не призначено ніякі уроки
+      </p>
+      <br>
+      <p>До початку залишилось:</p>
+      <p>{{Lesson.prettyTime(lastLessonAndDay.lesson.startTime-Time.hourMinutesToMinutes(this.now.getHours(),this.now.getMinutes()))}}</p>
+    </ng-container>
+
+    <ng-container *ngIf="lastLessonAndDay.role === 'current'">
+      <p>Заняття зараз:</p>
+      <br><br>
+      <p>{{ lastLessonAndDay.day.name }}</p>
+      <strong>{{ lastLessonAndDay.lesson.subject }}</strong>
+      <p>з {{ Lesson.prettyTime(lastLessonAndDay.lesson.startTime)}} до {{ Lesson.prettyTime(lastLessonAndDay.lesson.endTime)}}</p>
+      <p *ngIf="lastLessonAndDay.lesson.link"><a href="{{ lastLessonAndDay.lesson.link }}" target="_blank">{{ lastLessonAndDay.lesson.link }}</a></p>
+      <br>
+      <p>До завершення залишилось:</p>
+      <p>{{Lesson.prettyTime(lastLessonAndDay.lesson.endTime-Time.hourMinutesToMinutes(this.now.getHours(),this.now.getMinutes()))}}</p>
+    </ng-container>
+
+  </div>
+</ion-content>

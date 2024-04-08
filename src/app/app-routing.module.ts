@@ -10,7 +10,14 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  }
+  },
+  {
+    path: 'schedule-tabs',
+    loadChildren: () => import('./schedule-tabs/schedule-tabs.module').then( m => m.ScheduleTabsPageModule)
+  },
+
+
+
 ];
 
 @NgModule({

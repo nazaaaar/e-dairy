@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Відміна</ion-button>
+    </ion-buttons>
+    <ion-title>Оберіть час</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true" [disabled]="!isFormValid()">Ок</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-input labelPlacement="stacked" label="Введіть назву предмету" [(ngModel)]="subject" placeholder="Назва предмету"></ion-input>
+  </ion-item>
+  <ion-item>
+  <div style="display: flex; align-items: center;">
+    <ion-item style="flex: 1;">
+      <ion-input label="Години" labelPlacement="stacked" type="number" [(ngModel)]="hours" placeholder="HH" min="0" max="23"></ion-input>
+    </ion-item>
+    <div style="padding: 0 10px;">:</div>
+    <ion-item style="flex: 1;">
+      <ion-input label="Хвилини" labelPlacement="stacked" type="number" [(ngModel)]="minutes" placeholder="MM" min="0" max="59"></ion-input>
+    </ion-item>
+  </div>
+  </ion-item>
+
+
+
+  <ion-item>
+    <ion-input labelPlacement="stacked" type="number" min="0" label="Введіть тривалість заняття в хвилинах " [(ngModel)]="duration" placeholder="Тривалість в хвилинах"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input labelPlacement="stacked" label="Введіть опис" [(ngModel)]="description" placeholder="Опис"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input labelPlacement="stacked" label="Введіть посилання" [(ngModel)]="link" placeholder="https/meet.com"></ion-input>
+  </ion-item>
+</ion-content>
