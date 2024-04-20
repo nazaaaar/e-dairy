@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Створити новий клас</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input label="Назва класу" label-placement="floating" type="text" [(ngModel)]="newClass.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Предмет" label-placement="floating" type="text" [(ngModel)]="newClass.subject"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" (click)="createClass()">Створити</ion-button>
+</ion-content>

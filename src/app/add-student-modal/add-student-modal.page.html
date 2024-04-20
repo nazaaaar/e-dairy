@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Додати студента</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder="Пошук" animated (ionChange)="searchStudents($event)"></ion-searchbar>
+
+  <ion-list lines="full">
+    <ion-item *ngFor="let student of filteredStudents" (click)="selectStudent(student)">
+      <ion-label>{{ student.firstName }} {{ student.lastName }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="selectedStudent">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Email:</ion-label>
+          <ion-text>{{ selectedStudent.email }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>First Name:</ion-label>
+          <ion-text>{{ selectedStudent.firstName }}</ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Last Name:</ion-label>
+          <ion-text>{{ selectedStudent.lastName }}</ion-text>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" (click)="closeModal()">Вибрати</ion-button>
+  </div>
+</ion-content>

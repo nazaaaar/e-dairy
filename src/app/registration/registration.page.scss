@@ -1,0 +1,11 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Горизонтальне центрування */
+  justify-content: center; /* Вертикальне центрування */
+  margin-left: 5%; /* Відступ зліва на 5% */
+  margin-right: 5%; /* Відступ справа на 5% */
+  margin-top: 8%;
+}
+

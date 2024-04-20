@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Домашнє завдання
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-input *ngIf="editMode" label="Дата здачі" label-placement="stacked"
+          [(ngModel)]="deadlineString"
+          placeholder="YYYY-DD-MM"
+          [maskito]="dateMask"
+          [maskitoElement]="maskPredicate"
+          style="font-weight: lighter; font-size: 0.8rem;"
+        ></ion-input>
+
+        <ion-label style="font-weight: lighter; font-size: 0.8rem;" *ngIf="!editMode">
+          Дата здачі: {{deadlineString}}
+        </ion-label>
+      </ion-card-subtitle>
+
+      <ion-input *ngIf="editMode" [(ngModel)]="homework.title" placeholder="Заголовок" style="font-weight: bold; font-size: 1.2rem;"></ion-input>
+      <ion-label *ngIf="!editMode" style="font-weight: bold; font-size: 1.2rem;">{{ homework.title }}</ion-label>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-textarea [readonly]="!editMode" label="Опис" label-placement="stacked" [autoGrow]="true" [(ngModel)]="homework.description" placeholder="Опис"></ion-textarea>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer  *ngIf="editMode">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button expand="full" (click)="deleteNote()">Видалити домашнє завдання</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

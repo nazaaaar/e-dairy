@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Day } from './day';
-import { Lesson } from './lesson';
+import { Day } from '../models/day';
+import { Lesson } from '../models/lesson';
 import {ActionSheetController, ModalController} from '@ionic/angular';
 import { AddCardComponent } from '../add-card/add-card.component';
 import { Storage } from '@ionic/storage-angular';
 import {Time} from "./time";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-schedule-editor',
@@ -14,7 +15,10 @@ import {Time} from "./time";
 export class ScheduleEditorPage implements OnInit {
   days: Day[] = [];
 
-  constructor(private modalCtrl: ModalController, private storage: Storage, private actionSheetCtrl: ActionSheetController) {}
+  constructor(private modalCtrl: ModalController,
+              private storage: Storage,
+              private actionSheetCtrl: ActionSheetController,
+              protected appComponent: AppComponent) {}
 
   async ngOnInit() {
     const orderedDaysKeys = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', "П'ятниця", 'Субота', 'Неділя'];
@@ -37,9 +41,7 @@ export class ScheduleEditorPage implements OnInit {
     const {data, role} = await this.openModal();
 
     if (role == 'confirm' && data) {
-      // Add new lesson to the existing lessons array
       day.addLesson(new Lesson(data.subject, data.startMinutes, data.endMinutes, data.link, data.description));
-      // Save updated lessons array
       await this.storage.set(day.name.toLowerCase(), { lessons: day.lessons });
     }
   }

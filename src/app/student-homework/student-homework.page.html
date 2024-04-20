@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Моє домашнє</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title *ngIf="classDetails">{{ classDetails.name }} - {{ classDetails.subject }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let homework of classDetails?.homeworks" (click)="openNoteDetail(homework)">
+      <ion-label>{{ homework.title }} </ion-label>
+      <br>
+      <ion-label style="font-weight: lighter; font-size: 0.7rem;">Дедлайн: {{formatDeadline(homework.deadline)}}</ion-label>
+      <ion-note slot="end">{{ homework.publishDate }}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

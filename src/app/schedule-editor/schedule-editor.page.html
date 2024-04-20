@@ -12,12 +12,9 @@
     <ion-item [button]="true" (click)="toggleExpansion(day)" detail="true" detail-icon="chevron-down-outline">
       <ion-label>{{ day.name }}</ion-label>
     </ion-item>
-    <ion-list *ngIf="day.expanded" >
-      <ion-card *ngFor="let lesson of day.lessons"  (click)="presentActionSheet(day,lesson)">
-        <ion-card-title
-        >
-          {{ lesson.subject }}
-        </ion-card-title>
+    <ion-list *ngIf="day.expanded">
+      <ion-card *ngFor="let lesson of day.lessons" (click)="appComponent.loggedInUser?.role === 'teacher' ? presentActionSheet(day,lesson) : null">
+        <ion-card-title>{{ lesson.subject }}</ion-card-title>
         <ion-card-content>
           <ion-text>
             {{Lesson.prettyTime(lesson.startTime) }} - {{ Lesson.prettyTime(lesson.endTime) }}
@@ -27,15 +24,11 @@
           <p>{{ lesson.description }}</p>
         </ion-card-content>
       </ion-card>
-      <ion-item>
+      <ion-item *ngIf="appComponent.loggedInUser?.role === 'teacher'">
         <ion-button expand="block" (click)="openAddModal(day)">
           <ion-icon slot="icon-only" name="add"></ion-icon>
         </ion-button>
       </ion-item>
     </ion-list>
-
   </ion-list>
-
-
-
 </ion-content>

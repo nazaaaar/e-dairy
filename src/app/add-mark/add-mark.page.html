@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Оцінки</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="togglePreviousMarks()">
+        <ion-icon name="caret-forward-outline" *ngIf="showPreviousMarks"></ion-icon>
+        <ion-icon name="caret-down-outline" *ngIf="!showPreviousMarks"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title *ngIf="student">{{ student.firstName }} {{ student.lastName }} - {{className}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="showPreviousMarks">
+    <ion-list-header>
+      Попередні оцінки
+    </ion-list-header>
+    <ion-item>
+      <ion-select label="Виберіть місяць для перегляду оцінок" label-placement="stacked" [(ngModel)]="selectedMonth" (ionChange)="filterMarksByMonth($event.detail.value)">
+        <ion-select-option *ngFor="let month of months" [value]="month.value">{{ month.label }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div  *ngFor="let mark of filteredMarks">
+      <ion-item (click)="toggleDescription(mark)">
+        <ion-label>{{ mark.date | date: 'dd/MM/yyyy' }}</ion-label>
+        <ion-note slot="end">{{ mark.mark }}</ion-note>
+        <ion-button size="small" slot="end" (click)="deleteMark(mark)">Delete</ion-button>
+      </ion-item>
+      <ion-item *ngIf="mark.showDescription">
+        Коментар: {{ mark.description }}
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-list *ngIf="!showPreviousMarks">
+    <ion-item>
+      <ion-input label="Оцінка" label-placement="stacked" type="number" [(ngModel)]="mark"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea label="Коментар" label-placement="stacked" [(ngModel)]="description"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" (click)="saveMark()">Save Mark</ion-button>
+  </ion-list>
+
+
+</ion-content>

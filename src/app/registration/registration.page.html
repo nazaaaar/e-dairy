@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Реєстрація
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="container">
+
+    <ion-input label="Ваш email" label-placement="stacked" type="email" [(ngModel)]="data.email"></ion-input>
+    <ion-input label="Ваш пароль" label-placement="stacked" type="password" [(ngModel)]="data.password"></ion-input>
+    <ion-input label="Ім'я" label-placement="stacked" type="text" [(ngModel)]="data.firstName"></ion-input>
+    <ion-input label="Прізвище" label-placement="stacked" type="text" [(ngModel)]="data.lastName"></ion-input>
+    <br>
+    <ion-radio-group value="student" [(ngModel)]="data.role" style="align-self: flex-start;">
+      <ion-radio value="student" labelPlacement="end">Я студент</ion-radio><br />
+      <ion-radio value="teacher" labelPlacement="end">Я вчитель</ion-radio><br />
+    </ion-radio-group>
+
+    <ion-button (click)="register()">Реєстрація</ion-button>
+
+    <br><br>
+    <ion-text>
+      <b>Вже зареєстровані? </b>  <a routerLink="/login">Вхід</a>
+    </ion-text>
+  </div>
+
+</ion-content>

@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ScheduleTabsPage } from './schedule-tabs.page';
 
+localStorage.getItem('')
+
 const routes: Routes = [
   {
     path: '',

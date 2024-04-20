@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Мої оцінки</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title *ngIf="student">{{ student.firstName }} {{ student.lastName }} - {{className}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-select label="Виберіть місяць для перегляду оцінок" label-placement="stacked" [(ngModel)]="selectedMonth" (ionChange)="filterMarksByMonth($event.detail.value)">
+      <ion-select-option *ngFor="let month of months" [value]="month.value">{{ month.label }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div  *ngFor="let mark of filteredMarks">
+    <ion-item (click)="toggleDescription(mark)">
+      <ion-label>{{ mark.date | date: 'dd/MM/yyyy' }}</ion-label>
+      <ion-note slot="end">{{ mark.mark }}</ion-note>
+    </ion-item>
+    <ion-item *ngIf="mark.showDescription">
+      Коментар: {{ mark.description }}
+    </ion-item>
+  </div>
+</ion-content>
