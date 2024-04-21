@@ -32,6 +32,11 @@ export class ClassHomeworkPage implements OnInit {
 
     if (storedClasses && this.className) {
       this.classDetails = storedClasses.find(cls => cls.name === this.className);
+      if (this.classDetails){
+        this.classDetails.homeworks.forEach(homework => {
+        this.colorMap.set(homework, this.getNextColor());
+        });
+      }
     }
   }
 
@@ -102,5 +107,18 @@ export class ClassHomeworkPage implements OnInit {
     if (this.classDetails)
       this.classDetails.homeworks = this.classDetails.homeworks.filter(homework => homework !== deleted);
     this.saveHomeworks();
+  }
+
+  colorMap: Map<Homework, string> = new Map();
+  colorIndex: number = 0;
+  getNextColor(): string {
+    const colors = ['#FF5733', '#ffdd33', '#ff9933', '#ff337a']; // Array of colors
+    const color = colors[this.colorIndex];
+    this.colorIndex = (this.colorIndex + 1) % colors.length; // Increment color index and wrap around if needed
+    return color;
+  }
+
+  getColor(homework: Homework): string {
+    return this.colorMap.get(homework) || ''; // Return color from the color map
   }
 }

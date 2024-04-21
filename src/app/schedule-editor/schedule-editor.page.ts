@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Day } from '../models/day';
 import { Lesson } from '../models/lesson';
-import {ActionSheetController, ModalController} from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 import { AddCardComponent } from '../add-card/add-card.component';
 import { Storage } from '@ionic/storage-angular';
-import {Time} from "./time";
-import {AppComponent} from "../app.component";
+import { Time } from "./time";
+import { AppComponent } from "../app.component";
 
 @Component({
   selector: 'app-schedule-editor',
@@ -14,6 +14,16 @@ import {AppComponent} from "../app.component";
 })
 export class ScheduleEditorPage implements OnInit {
   days: Day[] = [];
+  dayStyles: { [key: string]: { icon: string, color: string } } = {
+    'Понеділок': { icon: 'calendar-outline', color: '#FFD700' }, // Yellow color for Monday
+    'Вівторок': { icon: 'calendar-outline', color: '#32db64' }, // Green color for Tuesday
+    'Середа': { icon: 'calendar-outline', color: '#ffce00' }, // Yellow color for Wednesday
+    'Четвер': { icon: 'calendar-outline', color: '#ff6900' }, // Orange color for Thursday
+    "П'ятниця": { icon: 'calendar-outline', color: '#a052e0' }, // Purple color for Friday
+    'Субота': { icon: 'calendar-outline', color: '#34e7e4' }, // Cyan color for Saturday
+    'Неділя': { icon: 'calendar-outline', color: '#9a89ea' } // Lavender color for Sunday
+  };
+
 
   constructor(private modalCtrl: ModalController,
               private storage: Storage,
@@ -38,13 +48,14 @@ export class ScheduleEditorPage implements OnInit {
   }
 
   async openAddModal(day: Day) {
-    const {data, role} = await this.openModal();
+    const { data, role } = await this.openModal();
 
     if (role == 'confirm' && data) {
       day.addLesson(new Lesson(data.subject, data.startMinutes, data.endMinutes, data.link, data.description));
       await this.storage.set(day.name.toLowerCase(), { lessons: day.lessons });
     }
   }
+
   async openEditModal(day: Day, lesson: Lesson) {
     const mh = Time.minutesToHourMinutes(lesson.startTime);
     const modal = await this.modalCtrl.create({
@@ -77,11 +88,11 @@ export class ScheduleEditorPage implements OnInit {
     });
     modal.present();
 
-    const {data, role} = await modal.onWillDismiss();
-    return {data, role};
+    const { data, role } = await modal.onWillDismiss();
+    return { data, role };
   }
 
-  async deleteLesson(day: Day, lesson: Lesson){
+  async deleteLesson(day: Day, lesson: Lesson) {
     day.deleteLessonByObject(lesson);
     await this.storage.set(day.name.toLowerCase(), { lessons: day.lessons });
   }

@@ -1,0 +1,18 @@
+/* Custom styling for ion-item */
+.homework-item {
+  border-bottom: 1px solid #ccc; /* Add border bottom to separate items */
+}
+
+.deadline-label {
+  font-weight: lighter;
+  font-size: 0.8rem; /* Increase font size for better readability */
+  color: #888; /* Dim the color */
+}
+
+.publish-date {
+  font-size: 0.7rem;
+  color: #aaa; /* Adjust color */
+}
+ion-item {
+  --border-color: var(--ion-color-dark); /* Set border color */
+}

@@ -58,6 +58,10 @@ export class RegistrationPage {
     const firstName = this.data.firstName;
     const lastName = this.data.lastName;
 
+     if (!this.data.role){
+       return false;
+     }
+
     if (!email.trim()) {
       this.presentAlert("Помилка", 'Емейл не повинен бути пустим');
       return false;

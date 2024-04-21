@@ -62,6 +62,7 @@ export class AppComponent implements OnInit {
     else {
 
       this.appPages = [
+        {title: "Головна", url:"/info", icon:"information"},
         { title: 'Вхід', url: '/login', icon: 'log-in' },
         { title: 'Реєстрація', url: '/registration', icon: 'person-add' }
       ];

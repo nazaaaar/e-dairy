@@ -58,7 +58,7 @@ export class MyMarksPage implements OnInit {
     if (month === null) {
       this.loadPreviousMarks();
     } else {
-      if (this.classDetails.marks) {
+      if (this.classDetails.marks[this.student.email]) {
         this.filteredMarks = this.classDetails.marks[this.student.email].filter(mark => mark.date.getMonth() === month);
       }
       this.filteredMarks.sort((a, b) => b.date.getTime() - a.date.getTime());

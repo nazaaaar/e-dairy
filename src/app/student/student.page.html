@@ -13,6 +13,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let class of allClasses">
       <ion-item (click)="viewClassStudents(class)">
+        <ion-icon slot="start" [color]="getColor(class.name)" name="school"></ion-icon> <!-- Added icon -->
         <ion-label>{{ class.name }} - {{ class.subject }}</ion-label>
       </ion-item>
     </ion-item-sliding>

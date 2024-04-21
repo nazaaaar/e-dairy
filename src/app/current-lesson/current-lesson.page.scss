@@ -7,19 +7,37 @@ ion-menu-button {
   position: absolute;
   left: 0;
   right: 0;
-  top: 40%;
-  transform: translateY(-50%);
+  top: 7%;
+
 }
 
-.container strong {
+.section {
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.section-icon {
+  font-size: 48px; /* Adjust size as needed */
+  color: var(--ion-color-primary); /* Use your desired color */
+}
+
+.section h1 {
   font-size: 28px;
-  line-height: 36px;
+  margin-bottom: 14px;
+  color: #8c8c8c; /* Use your desired color */
 }
 
-.container p {
-  font-size: 24px;
+.section h2 {
+  font-size: 36px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  color: var(--ion-color-primary); /* Use your desired color */
+}
+
+
+.section p {
+  font-size: 20px;
   line-height: 28px;
-  color: #8c8c8c;
+  color: #8c8c8c; /* Use your desired color */
   margin: 0;
 }
 

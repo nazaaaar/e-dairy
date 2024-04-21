@@ -15,8 +15,9 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let student of classDetails?.students">
+      <ion-icon size="large" name="person-circle-outline" slot="start"></ion-icon>
       <ion-label>{{ student.firstName }} {{ student.lastName }}</ion-label>
-      <ion-button size="small" slot="end" (click)="deleteStudent(student.email)">
+      <ion-button slot="end" (click)="deleteStudent(student.email)">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-button>
       <ion-button size="small" slot="end" (click)="redirectToAddMark(student)">

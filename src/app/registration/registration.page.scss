@@ -1,11 +1,26 @@
-
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Горизонтальне центрування */
-  justify-content: center; /* Вертикальне центрування */
-  margin-left: 5%; /* Відступ зліва на 5% */
-  margin-right: 5%; /* Відступ справа на 5% */
-  margin-top: 8%;
+  align-items: center;
+  justify-content: center;
+  margin: 8% 5%; /* Margin top-bottom 8%, margin left-right 5% */
+}
+
+ion-input, ion-radio-group, ion-button, ion-text {
+  margin-bottom: 20px; /* Add space between elements */
+}
+
+ion-button {
+  --border-radius: 20px; /* Increase button border radius */
+}
+
+ion-text a {
+  color: var(--ion-color-primary); /* Link color */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+ion-text a:hover {
+  color: var(--ion-color-primary-tint); /* Change color on hover */
 }
 

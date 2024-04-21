@@ -13,13 +13,19 @@
   <div class="container" *ngIf="lastLessonAndDay">
 
     <ng-container *ngIf="lastLessonAndDay.role === 'next'">
-      <p>Найближче заняття:</p>
+      <div class="section">
+        <ion-icon name="calendar" class="section-icon"></ion-icon>
+        <h1>Найближче заняття:</h1>
+      </div>
       <br><br>
-      <p>{{ lastLessonAndDay.day.name }}</p>
-      <strong>{{ lastLessonAndDay.lesson.subject }}</strong>
-      <p>з {{ Lesson.prettyTime(lastLessonAndDay.lesson.startTime)}} по {{ Lesson.prettyTime(lastLessonAndDay.lesson.endTime)}}</p>
-      <p *ngIf="lastLessonAndDay.lesson.link"><a href="{{ lastLessonAndDay.lesson.link }}" target="_blank">{{ lastLessonAndDay.lesson.link }}</a></p>
-
+      <div class="section">
+        <ion-card-content >
+          <p>{{ lastLessonAndDay.day.name }}</p>
+          <h2>{{ lastLessonAndDay.lesson.subject }}</h2>
+          <p>з {{ Lesson.prettyTime(lastLessonAndDay.lesson.startTime)}} по {{ Lesson.prettyTime(lastLessonAndDay.lesson.endTime)}}</p>
+          <p *ngIf="lastLessonAndDay.lesson.link"><a href="{{ lastLessonAndDay.lesson.link }}" target="_blank">Посилання</a></p>
+        </ion-card-content>
+      </div>
       <br>
       <p>До початку залишилось:</p>
 
@@ -28,12 +34,17 @@
     </ng-container>
 
     <ng-container *ngIf="lastLessonAndDay.role === 'current'">
-      <p>Заняття зараз:</p>
+      <div class="section">
+        <ion-icon name="time" class="section-icon"></ion-icon>
+        <h1>Заняття зараз:</h1>
+      </div>
       <br><br>
-      <p>{{ lastLessonAndDay.day.name }}</p>
-      <strong>{{ lastLessonAndDay.lesson.subject }}</strong>
-      <p>з {{ Lesson.prettyTime(lastLessonAndDay.lesson.startTime)}} по {{ Lesson.prettyTime(lastLessonAndDay.lesson.endTime)}}</p>
-      <p *ngIf="lastLessonAndDay.lesson.link"><a href="{{ lastLessonAndDay.lesson.link }}" target="_blank">{{ lastLessonAndDay.lesson.link }}</a></p>
+      <div class="section">
+        <p>{{ lastLessonAndDay.day.name }}</p>
+        <h2>{{ lastLessonAndDay.lesson.subject }}</h2>
+        <p>з {{ Lesson.prettyTime(lastLessonAndDay.lesson.startTime)}} по {{ Lesson.prettyTime(lastLessonAndDay.lesson.endTime)}}</p>
+        <p *ngIf="lastLessonAndDay.lesson.link"><a href="{{ lastLessonAndDay.lesson.link }}" target="_blank">Посилання</a></p>
+      </div>
       <br>
       <p>До завершення залишилось:</p>
       <p>{{Lesson.prettyTime(lastLessonAndDay.lesson.endTime-Time.hourMinutesToMinutes(this.now.getHours(),this.now.getMinutes()))}}</p>

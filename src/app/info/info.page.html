@@ -10,9 +10,58 @@
 </ion-header>
 
 <ion-content>
-  <div class="container" >
-    <p>
-      Слідкуйте за розкладом ваших занять, переглядайте ваші домашні завдання та отримуйте оцінки
-    </p>
+  <div class="container">
+
+    <div class="section" id="section1">
+      <ion-icon name="calendar" class="section-icon"></ion-icon>
+      <h1>Електронний щоденник</h1>
+      <p>
+        Слідкуйте за розкладом ваших занять, переглядайте ваші домашні завдання та отримуйте оцінки
+      </p>
+      <ion-icon name="arrow-down-circle-outline" id="arrow1" class="arrow-icon"></ion-icon>
+    </div>
+
+    <div class="section" id="section2">
+      <ion-icon name="time" class="section-icon"></ion-icon>
+      <h2>Розклад занять</h2>
+      <p>
+        Викладачі можуть додавати заняття, а ви швидко перевіряти розклад
+        Додавайте до свого розкладу важливі події та зустрічі, щоб завжди бути в курсі
+      </p>
+      <ion-icon name="arrow-down-circle-outline" id="arrow2" class="arrow-icon"></ion-icon>
+    </div>
+
+    <div class="section" id="section3">
+      <ion-icon name="document-text" class="section-icon"></ion-icon>
+      <h2>Домашні завдання</h2>
+      <p>
+        Переглядайте домашні завдання та будьте в курсі матеріалу
+        Завдання відображаються в порядку їх додавання, ви можете також відзначити завдання як виконані
+      </p>
+      <ion-icon name="arrow-down-circle-outline" id="arrow3" class="arrow-icon"></ion-icon>
+    </div>
+
+    <div class="section" id="section4">
+      <ion-icon name="ribbon" class="section-icon"></ion-icon>
+      <h2>Оцінки</h2>
+      <p>
+        Вчителі можуть вести власний щоденник а ви переглядати оцінки
+        Переглядайте ваші оцінки з усіх предметів та стежте за академічним прогресом
+      </p>
+      <ion-icon name="arrow-down-circle-outline" id="arrow4" class="arrow-icon"></ion-icon>
+    </div>
+
+    <div class="section" id="section5">
+      <ion-icon name="log-in" class="section-icon"></ion-icon>
+      <h2>Почни роботу з додатком вже сьогодні!</h2>
+      <p>
+        Ввійди або зареєструйся щоб вести свій електронний щоденник вже сьогодні
+      </p>
+      <br>
+      <br>
+      <a routerLink="/login" class="login-link">Увійти </a>
+      <a routerLink="/registration" class="login-link">Зареєструватися</a>
+    </div>
+
   </div>
 </ion-content>

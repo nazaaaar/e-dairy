@@ -19,6 +19,7 @@
     <ion-input label="Прізвище" label-placement="stacked" type="text" [(ngModel)]="data.lastName"></ion-input>
     <br>
     <ion-radio-group value="student" [(ngModel)]="data.role" style="align-self: flex-start;">
+      <ion-label>Виберіть вашу роль:</ion-label><br />
       <ion-radio value="student" labelPlacement="end">Я студент</ion-radio><br />
       <ion-radio value="teacher" labelPlacement="end">Я вчитель</ion-radio><br />
     </ion-radio-group>

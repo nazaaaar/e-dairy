@@ -10,12 +10,13 @@
 <ion-content [fullscreen]="true">
   <ion-list *ngFor="let day of days">
     <ion-item [button]="true" (click)="toggleExpansion(day)" detail="true" detail-icon="chevron-down-outline">
+      <ion-icon slot="start" [name]="dayStyles[day.name].icon" [style.color]="dayStyles[day.name].color"></ion-icon>
       <ion-label>{{ day.name }}</ion-label>
     </ion-item>
     <ion-list *ngIf="day.expanded">
-      <ion-card *ngFor="let lesson of day.lessons" (click)="appComponent.loggedInUser?.role === 'teacher' ? presentActionSheet(day,lesson) : null">
-        <ion-card-title>{{ lesson.subject }}</ion-card-title>
-        <ion-card-content>
+      <ion-card class="custom-card" *ngFor="let lesson of day.lessons" (click)="appComponent.loggedInUser?.role === 'teacher' ? presentActionSheet(day,lesson) : null">
+        <ion-card-title class="card-title">{{ lesson.subject }}</ion-card-title>
+        <ion-card-content class="card-content">
           <ion-text>
             {{Lesson.prettyTime(lesson.startTime) }} - {{ Lesson.prettyTime(lesson.endTime) }}
           </ion-text>

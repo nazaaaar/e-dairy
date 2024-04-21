@@ -3,26 +3,40 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Мої оцінки</ion-title>
+    <ion-title>
+      <ion-icon name="list"></ion-icon> Мої оцінки
+    </ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-title *ngIf="student">{{ student.firstName }} {{ student.lastName }} - {{className}}</ion-title>
+    <ion-title *ngIf="student">
+      <ion-icon name="person"></ion-icon> {{ student.firstName }} {{ student.lastName }} - {{ className }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-item>
+    <ion-icon slot="start" name="calendar"></ion-icon>
+
     <ion-select label="Виберіть місяць для перегляду оцінок" label-placement="stacked" [(ngModel)]="selectedMonth" (ionChange)="filterMarksByMonth($event.detail.value)">
       <ion-select-option *ngFor="let month of months" [value]="month.value">{{ month.label }}</ion-select-option>
     </ion-select>
   </ion-item>
-  <div  *ngFor="let mark of filteredMarks">
+  <div *ngFor="let mark of filteredMarks">
     <ion-item (click)="toggleDescription(mark)">
-      <ion-label>{{ mark.date | date: 'dd/MM/yyyy' }}</ion-label>
-      <ion-note slot="end">{{ mark.mark }}</ion-note>
+      <ion-label>
+        <ion-icon  name="calendar"></ion-icon> {{ mark.date | date: 'dd/MM/yyyy' }}
+      </ion-label>
+      <ion-note style="font-size: large" slot="end">
+        <ion-icon  name="bookmark"></ion-icon> Ваш бал: {{ mark.mark }}
+      </ion-note>
     </ion-item>
     <ion-item *ngIf="mark.showDescription">
-      Коментар: {{ mark.description }}
+      <ion-label>
+        <ion-icon name="information-circle"></ion-icon> Коментар: {{ mark.description }}
+      </ion-label>
     </ion-item>
   </div>
 </ion-content>
+
+
