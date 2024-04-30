@@ -52,9 +52,18 @@
 
 
   </div>
+
   <div class="container" *ngIf="!lastLessonAndDay">
-    <p>
-      Не призначено ніякі уроки :(
-    </p>
+    <ng-container>
+      <br>
+      <br>
+      <br>
+      <br>
+    <div class="section">
+      <ion-icon name="cloud-offline-outline" class="section-icon"></ion-icon>
+      <h1>Не призначено ніякі уроки :(</h1>
+    </div>
+    </ng-container>
   </div>
+
 </ion-content>

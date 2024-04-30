@@ -9,6 +9,10 @@ const routes: Routes = [
     component: ClassTabsPage,
     children: [
       {
+        path: 'class-lessons/:name',
+        loadChildren: () => import('../class-lessons/class-lessons.module').then( m => m.ClassLessonsPageModule)
+      },
+      {
         path: 'class-students/:name',
         loadChildren: () => import('../class-students/class-students.module').then( m => m.ClassStudentsPageModule)
       },

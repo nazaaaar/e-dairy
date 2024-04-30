@@ -1,0 +1,12 @@
+
+
+ion-card {
+  // General styling for ion-card
+  border: 2px solid transparent; // Transparent border by default
+  transition: border-color 0.3s; // Smooth transition for border color change
+
+  &.uncompleted {
+    // Additional styling for completed lessons
+    border-color: #FAD02E; // Yellow outline for completed lessons
+  }
+}

@@ -1,6 +1,11 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
+    <ion-tab-button (click)="switchToTab('class-lessons')">
+      <ion-icon aria-hidden="true" name="layers"></ion-icon>
+      <ion-label>Уроки</ion-label>
+    </ion-tab-button>
+
     <ion-tab-button (click)="switchToTab('class-students')">
       <ion-icon aria-hidden="true" name="people"></ion-icon>
       <ion-label>Студенти</ion-label>

@@ -87,6 +87,6 @@ export class TeacherPage implements OnInit {
     // Encode the selected class name before navigating
     const encodedName = encodeURIComponent(selectedClass.name);
     localStorage.setItem('class-name-encoded',encodedName);
-    this.router.navigate(['/class-tabs/class-students', encodedName]);
+    this.router.navigate(['/class-tabs/class-lessons', encodedName]);
   }
 }

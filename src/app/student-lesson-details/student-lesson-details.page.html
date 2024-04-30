@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Урок {{lesson.id}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+  <ion-input readonly="true" label = "Назва" label-placement="stacked" type="text" [(ngModel)]="lesson.title"></ion-input>
+</ion-item>
+
+  <ion-item>
+    <ion-textarea readonly="true" rows="10" [autoGrow]="true" label = "Матеріали" label-placement="stacked" [(ngModel)]="lesson.info"></ion-textarea>
+  </ion-item>
+
+  <ion-button *ngIf="!isRead" expand="block" (click)="saveLesson()">Позначити як виконане</ion-button>
+  <ion-button *ngIf="isRead" expand="block" (click)="saveLesson()">Позначити як непрочитане</ion-button>
+
+</ion-content>

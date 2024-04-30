@@ -67,6 +67,20 @@ const routes: Routes = [
     path: 'student-tabs',
     loadChildren: () => import('./student-tabs/student-tabs.module').then( m => m.StudentTabsPageModule)
   },
+  {
+    path: 'class-search-modal',
+    loadChildren: () => import('./class-search-modal/class-search-modal.module').then( m => m.ClassSearchModalPageModule)
+  },
+  {
+    path: 'add-lesson-modal',
+    loadChildren: () => import('./add-lesson-modal/add-lesson-modal.module').then( m => m.AddLessonModalPageModule)
+  },
+
+  {
+    path: 'student-lesson-details',
+    loadChildren: () => import('./student-lesson-details/student-lesson-details.module').then( m => m.StudentLessonDetailsPageModule)
+  },
+
 
 
 

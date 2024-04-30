@@ -2,6 +2,11 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
+    <ion-tab-button (click)="switchToTab('student-lessons')">
+      <ion-icon aria-hidden="true" name="layers"></ion-icon>
+      <ion-label>Уроки</ion-label>
+    </ion-tab-button>
+
     <ion-tab-button (click)="switchToTab('my-marks')">
       <ion-icon aria-hidden="true" name="clipboard"></ion-icon>
       <ion-label>Мої оцінки</ion-label>

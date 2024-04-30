@@ -31,16 +31,22 @@ export class ScheduleEditorPage implements OnInit {
               protected appComponent: AppComponent) {}
 
   async ngOnInit() {
-    const orderedDaysKeys = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', "П'ятниця", 'Субота', 'Неділя'];
+    const loggedInUser = await this.storage.get('logged-in-user');
 
-    // Populate days with lessons
-    this.days = await Promise.all(
-      orderedDaysKeys.map(async (dayName) => {
-        const savedData = await this.storage.get(dayName.toLowerCase());
-        const lessons: Lesson[] = savedData ? savedData.lessons : [];
-        return new Day(dayName, lessons);
-      })
-    );
+    if (loggedInUser) {
+      const loggedInUserEmail = loggedInUser.email;
+
+      const orderedDaysKeys = ['Понеділок', 'Вівторок', 'Середа', 'Четвер', "П'ятниця", 'Субота', 'Неділя'];
+
+      // Populate days with lessons
+      this.days = await Promise.all(
+        orderedDaysKeys.map(async (dayName) => {
+          const savedData = await this.storage.get(`${dayName.toLowerCase()}_${loggedInUserEmail}`);
+          const lessons: Lesson[] = savedData ? savedData.lessons : [];
+          return new Day(dayName, lessons);
+        })
+      );
+    }
   }
 
   toggleExpansion(day: Day) {
@@ -52,7 +58,12 @@ export class ScheduleEditorPage implements OnInit {
 
     if (role == 'confirm' && data) {
       day.addLesson(new Lesson(data.subject, data.startMinutes, data.endMinutes, data.link, data.description));
-      await this.storage.set(day.name.toLowerCase(), { lessons: day.lessons });
+
+      const loggedInUser = await this.storage.get('logged-in-user');
+      if (loggedInUser) {
+        const loggedInUserEmail = loggedInUser.email;
+        await this.storage.set(`${day.name.toLowerCase()}_${loggedInUserEmail}`, { lessons: day.lessons });
+      }
     }
   }
 
@@ -78,7 +89,11 @@ export class ScheduleEditorPage implements OnInit {
 
     if (role == 'confirm' && data) {
       day.editLesson(lesson, new Lesson(data.subject, data.startMinutes, data.endMinutes, data.link, data.description));
-      await this.storage.set(day.name.toLowerCase(), { lessons: day.lessons });
+      const loggedInUser = await this.storage.get('logged-in-user');
+      if (loggedInUser) {
+        const loggedInUserEmail = loggedInUser.email;
+        await this.storage.set(`${day.name.toLowerCase()}_${loggedInUserEmail}`, { lessons: day.lessons });
+      }
     }
   }
 
@@ -94,7 +109,11 @@ export class ScheduleEditorPage implements OnInit {
 
   async deleteLesson(day: Day, lesson: Lesson) {
     day.deleteLessonByObject(lesson);
-    await this.storage.set(day.name.toLowerCase(), { lessons: day.lessons });
+    const loggedInUser = await this.storage.get('logged-in-user');
+    if (loggedInUser) {
+      const loggedInUserEmail = loggedInUser.email;
+      await this.storage.set(`${day.name.toLowerCase()}_${loggedInUserEmail}`, { lessons: day.lessons });
+    }
   }
 
   async presentActionSheet(day: Day, lesson: Lesson) {

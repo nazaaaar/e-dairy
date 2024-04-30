@@ -17,7 +17,12 @@ export class StudentTabsPage implements OnInit {
   switchToTab(tab: string) {
     const encodedName = localStorage.getItem('class-name-encoded');
 
-    if (tab === 'my-marks') {
+    if (tab === 'student-lessons') {
+      this.router.navigate(['student-tabs/student-lessons', {
+        className: encodedName
+      }]);
+    }
+    else if (tab === 'my-marks') {
       this.router.navigate(['student-tabs/my-marks', {
         className: encodedName
       }]);

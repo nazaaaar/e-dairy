@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Додати матеріал</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input label = "Назва" label-placement="stacked" type="text" [(ngModel)]="lesson.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label = "Номер" label-placement="stacked" type="number" [(ngModel)]="lesson.id"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-textarea rows="10" [autoGrow]="true" label = "Матеріали" label-placement="stacked" [(ngModel)]="lesson.info"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="block" (click)="saveLesson()">Зберегти</ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteLesson()">Видалити</ion-button>
+</ion-content>

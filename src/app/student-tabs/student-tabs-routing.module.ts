@@ -9,6 +9,10 @@ const routes: Routes = [
     component: StudentTabsPage,
     children: [
       {
+        path: 'student-lessons',
+        loadChildren: () => import('../student-lessons/student-lessons.module').then( m => m.StudentLessonsPageModule)
+      },
+      {
         path: 'my-marks',
         loadChildren: () => import('../my-marks/my-marks.module').then( m => m.MyMarksPageModule)
       },
@@ -18,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/student-tabs/my-marks',
+        redirectTo: '/student-tabs/student-lessons',
         pathMatch: 'full'
       },
     ]
@@ -26,7 +30,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/student-tabs/my-marks',
+    redirectTo: '/student-tabs/student-lessons',
     pathMatch: 'full'
   }
 ];

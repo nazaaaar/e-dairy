@@ -51,9 +51,15 @@ export class CurrentLessonPage implements OnInit, OnDestroy {
   private async getDaysFromStorage(orderedDaysKeys: string[]): Promise<Day[]> {
     return Promise.all(
       orderedDaysKeys.map(async (dayName) => {
-        const savedData = await this.storage.get(dayName.toLowerCase());
-        const lessons: Lesson[] = savedData ? savedData.lessons : [];
-        return new Day(dayName, lessons);
+        const loggedInUser = await this.storage.get('logged-in-user');
+        if (loggedInUser) {
+          const loggedInUserEmail = loggedInUser.email;
+          const savedData = await this.storage.get(`${dayName.toLowerCase()}_${loggedInUserEmail}`);
+          const lessons: Lesson[] = savedData ? savedData.lessons : [];
+          return new Day(dayName, lessons);
+        } else {
+          return new Day(dayName, []);
+        }
       })
     );
   }

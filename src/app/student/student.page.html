@@ -6,16 +6,23 @@
     <ion-title>
       Класи
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon (click)="openClassSearch()" size="large" name="add-outline"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item-sliding *ngFor="let class of allClasses">
-      <ion-item (click)="viewClassStudents(class)">
-        <ion-icon slot="start" [color]="getColor(class.name)" name="school"></ion-icon> <!-- Added icon -->
-        <ion-label>{{ class.name }} - {{ class.subject }}</ion-label>
+    <ion-item-sliding *ngFor="let cls of allClasses">
+      <ion-item (click)="viewClassStudents(cls)">
+        <ion-icon slot="start" [style.color]="getColor(cls.name)" name="school"></ion-icon>
+        <ion-label>{{ cls.name }} - {{ cls.subject }}</ion-label>
+        <ion-icon (click)="leaveClass(cls)" slot="end" name="trash-bin-outline"></ion-icon>
       </ion-item>
+
+
+
     </ion-item-sliding>
   </ion-list>
 </ion-content>

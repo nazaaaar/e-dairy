@@ -5,6 +5,7 @@ import {Mark} from "../models/mark";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Storage} from "@ionic/storage";
 import {AlertController, ToastController} from "@ionic/angular";
+import {Homework} from "../models/homework";
 
 @Component({
   selector: 'app-my-marks',
@@ -83,5 +84,7 @@ export class MyMarksPage implements OnInit {
   toggleDescription(mark: Mark) {
     mark.showDescription = !mark.showDescription;
   }
+
+
 
 }

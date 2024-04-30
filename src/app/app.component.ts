@@ -47,7 +47,8 @@ export class AppComponent implements OnInit {
       this.appPages = [
         { title: 'Розклад', url: '/schedule-tabs', icon: 'calendar' },
         { title: 'Щоденник', url: '/dairy', icon: 'create'},
-        { title: 'Клас', url: '/teacher', icon: 'school'},
+        { title: 'Курси', url: '/teacher', icon: 'school'},
+        {title: "Інформація", url:"/info", icon:"information"},
         { title: 'Вихід', action: 'logout', icon: 'log-out' },
       ];
     }
@@ -55,7 +56,8 @@ export class AppComponent implements OnInit {
       this.appPages = [
         { title: 'Розклад', url: '/schedule-tabs', icon: 'calendar' },
         { title: 'Щоденник', url: '/dairy', icon: 'create'},
-        { title: 'Класи', url: '/student', icon: 'school'},
+        { title: 'Курси', url: '/student', icon: 'school'},
+        {title: "Інформація", url:"/info", icon:"information"},
         { title: 'Вихід', action: 'logout', icon: 'log-out' },
       ];
     }

@@ -14,7 +14,7 @@
       <ion-label>{{ day.name }}</ion-label>
     </ion-item>
     <ion-list *ngIf="day.expanded">
-      <ion-card class="custom-card" *ngFor="let lesson of day.lessons" (click)="appComponent.loggedInUser?.role === 'teacher' ? presentActionSheet(day,lesson) : null">
+      <ion-card class="custom-card" *ngFor="let lesson of day.lessons" (click)="presentActionSheet(day,lesson)">
         <ion-card-title class="card-title">{{ lesson.subject }}</ion-card-title>
         <ion-card-content class="card-content">
           <ion-text>
@@ -25,7 +25,7 @@
           <p>{{ lesson.description }}</p>
         </ion-card-content>
       </ion-card>
-      <ion-item *ngIf="appComponent.loggedInUser?.role === 'teacher'">
+      <ion-item>
         <ion-button expand="block" (click)="openAddModal(day)">
           <ion-icon slot="icon-only" name="add"></ion-icon>
         </ion-button>

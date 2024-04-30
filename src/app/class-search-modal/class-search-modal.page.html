@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Search Classes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchTerm" placeholder="Search by subject, class name, or teacher email" (ionChange)="filterClasses()"></ion-searchbar>
+
+  <ion-list *ngFor="let cls of filteredClasses; let i = index">
+    <ion-item  (click)="toggleDetails(i)">
+      <ion-label>{{ cls.name }} - {{ cls.subject }}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="showDetailsMap.get(i)">
+      <ion-label>Email викладача: {{ cls.teacherEmail }}</ion-label>
+      <ion-button (click)="addStudentToClass(cls)">Приєднатися</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -19,7 +19,7 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item *ngFor="let homework of classDetails?.homeworks" (click)="openNoteDetail(homework)">
-      <ion-icon slot="start" name="clipboard-outline"></ion-icon>
+      <ion-icon [style.color]="getColor(homework)" slot="start" name="clipboard-outline"></ion-icon>
       <ion-label>{{ homework.title }}</ion-label>
       <br>
       <ion-note slot="end">{{ homework.publishDate }}</ion-note>
